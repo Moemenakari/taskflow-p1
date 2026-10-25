@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskFlow — a simple, responsive task manager built with HTML, CSS and JavaScript.">
+  <title>TaskFlow | Organize Your Day</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#" class="logo" aria-label="TaskFlow home">
+        <span class="logo-mark" aria-hidden="true">✓</span> TaskFlow
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#tasks">Tasks</a></li>
+        <li><a href="#stats">Stats</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <h1 id="hero-title">Organize your day, one task at a time.</h1>
+      <p>A calm, simple place to plan what matters. Works on your phone, tablet and desktop.</p>
+      <a href="#tasks" class="btn btn-primary">Start planning</a>
+    </section>
+
+    <div class="layout">
+      <section class="panel tasks" id="tasks" aria-labelledby="tasks-title">
+        <h2 id="tasks-title">My Tasks</h2>
+
+        <form class="task-form" id="task-form" novalidate>
+          <div class="field">
+            <label for="task-title">Task</label>
+            <input type="text" id="task-title" name="title" placeholder="e.g. Finish project report" maxlength="80" required aria-describedby="title-error">
+            <p class="error" id="title-error" role="alert"></p>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="task-priority">Priority</label>
+              <select id="task-priority" name="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="task-date">Due date</label>
+              <input type="date" id="task-date" name="due">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Add task</button>
+        </form>
+
+        <div class="filters" role="group" aria-label="Filter tasks">
+          <button class="chip active" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" data-filter="active" aria-pressed="false">Active</button>
+          <button class="chip" data-filter="done" aria-pressed="false">Completed</button>
+        </div>
+
+        <ul class="task-list" id="task-list" aria-live="polite"></ul>
+        <p class="empty" id="empty-state">No tasks here yet. Add your first one above.</p>
+      </section>
+
+      <aside class="panel side" id="stats" aria-labelledby="stats-title">
+        <h2 id="stats-title">Progress</h2>
+        <div class="stats-grid">
+          <article class="stat">
+            <p class="stat-num" id="stat-total">0</p>
+            <p class="stat-label">Total</p>
+          </article>
+          <article class="stat">
+            <p class="stat-num" id="stat-active">0</p>
+            <p class="stat-label">Active</p>
+          </article>
+          <article class="stat">
+            <p class="stat-num" id="stat-done">0</p>
+            <p class="stat-label">Done</p>
+          </article>
+        </div>
+        <div class="progress" role="progressbar" aria-label="Completion" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <p class="progress-text" id="progress-text">0% completed</p>
+        <button class="btn btn-ghost" id="clear-done">Clear completed</button>
+      </aside>
+    </div>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <h2 id="about-title">Why TaskFlow?</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Mobile-first</h3>
+          <p>Designed for small screens first, then expanded for tablets and desktops.</p>
+        </article>
+        <article class="card">
+          <h3>Accessible</h3>
+          <p>Semantic HTML, keyboard support and readable contrast for everyone.</p>
+        </article>
+        <article class="card">
+          <h3>Saves your work</h3>
+          <p>Your tasks stay in your browser even after you close the page.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 TaskFlow — Built by Mouemen Akkarie for the DecodeLabs Full Stack Internship.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
